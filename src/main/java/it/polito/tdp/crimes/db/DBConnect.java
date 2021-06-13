@@ -6,34 +6,36 @@ import java.sql.SQLException;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class DBConnect {
-
-	private static final String jdbcURL = "jdbc:mysql://localhost/denver_crimes";
-	private static HikariDataSource ds;
+public class DBConnect 
+{
+	private static final String jdbcURL = "jdbc:mariadb://localhost/denver_crimes";
+	private static final HikariDataSource dataSource;
 	
-	public static Connection getConnection() {
+	static 
+	{
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(jdbcURL);
+		config.setUsername("root");
+		config.setPassword("root");
 		
-		if (ds == null) {
-			HikariConfig config = new HikariConfig();
-			config.setJdbcUrl(jdbcURL);
-			config.setUsername("root");
-			config.setPassword("root");
-			
-			// configurazione MySQL
-			config.addDataSourceProperty("cachePrepStmts", "true");
-			config.addDataSourceProperty("prepStmtCacheSize", "250");
-			config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-			
-			ds = new HikariDataSource(config);
-		}
+		// configurazione MySQL
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 		
-		try {
-			
-			return ds.getConnection();
-
-		} catch (SQLException e) {
-			System.err.println("Errore connessione al DB");
-			throw new RuntimeException(e);
+		dataSource = new HikariDataSource(config);
+	}
+	
+	public static Connection getConnection() 
+	{	
+		try 
+		{
+			return dataSource.getConnection();
+		} 
+		catch (SQLException e) 
+		{
+			System.err.println("Errore connessione al DB at " + jdbcURL);
+			throw new RuntimeException("Errore connessione al DB at " + jdbcURL, e);
 		}
 	}
 

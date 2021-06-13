@@ -9,11 +9,13 @@ import java.util.List;
 import it.polito.tdp.crimes.model.Event;
 
 
-public class EventsDao {
-	
-	public List<Event> listAllEvents(){
+public class EventsDao 
+{	
+	public List<Event> listAllEvents()
+	{
 		String sql = "SELECT * FROM events" ;
-		try {
+		try 
+		{
 			Connection conn = DBConnect.getConnection() ;
 
 			PreparedStatement st = conn.prepareStatement(sql) ;
@@ -22,8 +24,10 @@ public class EventsDao {
 			
 			ResultSet res = st.executeQuery() ;
 			
-			while(res.next()) {
-				try {
+			while(res.next()) 
+			{
+				try 
+				{
 					list.add(new Event(res.getLong("incident_id"),
 							res.getInt("offense_code"),
 							res.getInt("offense_code_extension"), 
@@ -38,7 +42,9 @@ public class EventsDao {
 							res.getString("neighborhood_id"),
 							res.getInt("is_crime"),
 							res.getInt("is_traffic")));
-				} catch (Throwable t) {
+				} 
+				catch (Throwable t) 
+				{
 					t.printStackTrace();
 					System.out.println(res.getInt("id"));
 				}
@@ -46,9 +52,9 @@ public class EventsDao {
 			
 			conn.close();
 			return list ;
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 			return null ;
 		}

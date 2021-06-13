@@ -1,25 +1,26 @@
 package it.polito.tdp.crimes;
 
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 
 import it.polito.tdp.crimes.model.Model;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 
-public class EntryPoint extends Application {
-
+public class EntryPoint extends Application 
+{
     @Override
-    public void start(Stage stage) throws Exception {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Crimes.fxml"));
+    public void start(Stage stage) throws Exception 
+    {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Crimes_2019-06-27-C.fxml"));
 		BorderPane root = loader.load();
+		
 		CrimesController controller = loader.getController();
 		Model model = new Model();
 		controller.setModel(model);
+		
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
 		stage.setScene(scene);
@@ -34,8 +35,8 @@ public class EntryPoint extends Application {
      *
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         launch(args);
     }
-
 }

@@ -16,6 +16,7 @@ import javafx.scene.control.TextArea;
 
 public class CrimesController {
 	
+	@SuppressWarnings("unused")
 	private Model model;
 
     @FXML // ResourceBundle that was given to the FXMLLoader

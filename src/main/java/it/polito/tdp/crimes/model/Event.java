@@ -2,8 +2,8 @@ package it.polito.tdp.crimes.model;
 
 import java.time.LocalDateTime;
 
-public class Event {
-	
+public class Event 
+{	
 	private Long incident_id;
 	private Integer offense_code;
 	private Integer offense_code_extension;
@@ -22,8 +22,8 @@ public class Event {
 	public Event(Long incident_id, Integer offense_code, Integer offense_code_extension, String offense_type_id,
 			String offense_category_id, LocalDateTime reported_date, String incident_address, double geo_lon,
 			double geo_lat, Integer district_id, Integer precinct_id, String neighborhood_id, Integer is_crime,
-			Integer is_traffic) {
-		super();
+			Integer is_traffic) 
+	{
 		this.incident_id = incident_id;
 		this.offense_code = offense_code;
 		this.offense_code_extension = offense_code_extension;

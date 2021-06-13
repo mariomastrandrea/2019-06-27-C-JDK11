@@ -10,12 +10,19 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="408.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.crimes.CrimesController">
+<BorderPane prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.crimes.CrimesController">
    <top>
-      <Label text="Esame 27/06/2019 - Turno C" BorderPane.alignment="CENTER" />
+      <Label text="Esame 27/06/2019 - Turno C" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="15.0" />
+         </BorderPane.margin></Label>
    </top>
-   <right>
+   <center>
       <VBox prefHeight="415.0" prefWidth="441.0" BorderPane.alignment="CENTER">
          <children>
             <GridPane prefHeight="135.0" prefWidth="392.0">
@@ -63,8 +70,11 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </GridPane>
-            <TextArea fx:id="txtResult" prefHeight="318.0" prefWidth="441.0" />
+            <TextArea fx:id="txtResult" prefHeight="300.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin></TextArea>
          </children>
       </VBox>
-   </right>
+   </center>
 </BorderPane>
