@@ -121,12 +121,12 @@ public class CrimesController
 		for(String v : path)
 		{
 			if(sb.length() > 0)
-				sb.append(", ");
+				sb.append("\n");
 			
-			sb.append(v);
+			sb.append("- ").append(v);
 		}
 		
-		return String.format("Il cammino aciclico di peso massimo tra %s e %s è:\n{%s}\n\nPeso massimo: %d",
+		return String.format("Il cammino aciclico di peso massimo tra %s e %s è:\n%s\n\nPeso massimo: %d",
 				vertex1, vertex2, sb.toString(), maxWeight);
 	}
 
