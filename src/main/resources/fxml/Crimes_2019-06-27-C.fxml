@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.crimes.CrimesController">
+<BorderPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.crimes.CrimesController">
    <top>
       <Label text="Esame 27/06/2019 - Turno C" BorderPane.alignment="CENTER">
          <font>
@@ -25,11 +25,11 @@
    <center>
       <VBox prefHeight="415.0" prefWidth="441.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane prefHeight="135.0" prefWidth="392.0">
+            <GridPane alignment="CENTER" hgap="15.0" vgap="15.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="NEVER" />
-                <ColumnConstraints hgrow="NEVER" />
-                  <ColumnConstraints hgrow="NEVER" />
+                <ColumnConstraints halignment="RIGHT" hgrow="NEVER" />
+                <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -42,13 +42,13 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="boxCategoria" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="boxCategoria" prefWidth="250.0" GridPane.columnIndex="1" />
                   <Label text="Giorno" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="boxGiorno" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="boxGiorno" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button fx:id="btnAnalisi" mnemonicParsing="false" onAction="#doCreaGrafo" text="Analisi Stazioni" GridPane.columnIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" />
@@ -59,7 +59,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="boxArco" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="boxArco" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Button fx:id="btnPercorso" mnemonicParsing="false" onAction="#doCalcolaPercorso" text="Calcolo Percorso" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="10.0" />
@@ -72,7 +72,7 @@
             </GridPane>
             <TextArea fx:id="txtResult" prefHeight="300.0">
                <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
                </VBox.margin></TextArea>
          </children>
       </VBox>
