@@ -3,7 +3,9 @@ package it.polito.tdp.crimes.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.jgrapht.Graph;
@@ -120,18 +122,58 @@ public class Model
 		this.maxWeight = Integer.MIN_VALUE;
 		
 		List<String> partialSolution = new ArrayList<>();
+		partialSolution.add(vertex1);
 		
+		Set<String> partialSolutionSet = new HashSet<>();
+		partialSolutionSet.add(vertex1);
+		
+		this.recursiveMaxWeightPathComputation(partialSolution, partialSolutionSet, vertex2, 0);
+	}
+	
+	private void recursiveMaxWeightPathComputation(List<String> partialSolution, 
+			Set<String> partialSolutionSet,	//to reduce time complexity (in .remove())
+			String destination,	int currentWeight)
+	{
+		String lastVertex = partialSolution.get(partialSolution.size() - 1);
+		
+		if(lastVertex.equals(destination))
+		{
+			if(currentWeight > this.maxWeight)
+			{
+				this.maxWeight = currentWeight;
+				this.maxWeightPath = new ArrayList<>(partialSolution);
+			}
+			return;
+		}
+		
+		var nextEdges = this.graph.edgesOf(lastVertex);
+		
+		for(var edge : nextEdges)
+		{
+			int weight = (int)this.graph.getEdgeWeight(edge);
+			String nextVertex = Graphs.getOppositeVertex(this.graph, edge, lastVertex);
+			
+			if(partialSolutionSet.contains(nextVertex)) continue;
+			
+			partialSolution.add(nextVertex);
+			partialSolutionSet.add(nextVertex);
+			
+			this.recursiveMaxWeightPathComputation(partialSolution, partialSolutionSet, 
+					destination, currentWeight + weight);
+			
+			//backtracking
+			partialSolution.remove(partialSolution.size() - 1);
+			partialSolutionSet.remove(nextVertex);
+		}
 	}
 
 	public List<String> getMaxWeightPath()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return this.maxWeightPath;
 	}
 
 	public int getMaxWeight()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return this.maxWeight;
 	}
 }
